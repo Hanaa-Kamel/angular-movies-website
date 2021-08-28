@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="w-75 m-auto py-5">
+
+  <div *ngIf="error.length > 0" class="alert alert-danger">
+    <p>{{ error }}</p>
+  </div>
+
+  <form [formGroup]='loginForm' (ngSubmit)='submitLoginForm(loginForm)' >
+
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input formControlName="email" type="email" class=" form-control" name="" id="email">
+      <div *ngIf="loginForm.get('email')?.errors != null &&  loginForm.get('email')?.touched" class="alert my-2 alert-danger">
+        <p *ngIf="loginForm.get('email')?.errors?.required">Email is required</p>
+        <p *ngIf="loginForm.get('email')?.errors?.email">Email is invalid</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input formControlName="password" type="password" class=" form-control" name="" id="password">
+      <div *ngIf="loginForm.get('password')?.errors != null &&  loginForm.get('password')?.touched" class="alert my-2 alert-danger">
+        <p *ngIf="loginForm.get('password')?.errors?.required">password is required</p>
+        <p *ngIf="loginForm.get('password')?.errors?.pattern">password must start with capital letter </p>
+      </div>
+    </div>
+
+
+
+    <button [disabled]='loginForm.invalid' class="btn btn-info" type="submit">Login</button>
+
+  </form>
+
+</div>
+
