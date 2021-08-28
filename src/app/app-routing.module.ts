@@ -9,16 +9,17 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path :'', redirectTo : 'home' , pathMatch :'full'},
-  {path :'home' , component : HomeComponent},
-  {path :'about' , component : AboutComponent},
-  {path :'movies' , component : MoviesComponent},
-  {path :'tv' , component : TvComponent},
-  {path :'netwok' , component : NetworkComponent},
-  {path :'people' , component : PeopleComponent},
-  {path :'login' , component : LoginComponent},
+  {path :'home' , canActivate:[AuthGuard] ,component : HomeComponent},
+  {path :'about' , canActivate:[AuthGuard] ,component : AboutComponent},
+  {path :'movies' , canActivate:[AuthGuard]  , component : MoviesComponent},
+  {path :'tv' , canActivate:[AuthGuard]  , component : TvComponent},
+  {path :'netwok' , canActivate:[AuthGuard]  , component : NetworkComponent},
+  {path :'people' , canActivate:[AuthGuard] , component : PeopleComponent},
+  {path :'login' ,  component : LoginComponent},
   {path :'register' , component : RegisterComponent},
   {path :'**' , component : NotfoundComponent},
 ];
