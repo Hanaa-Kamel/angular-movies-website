@@ -8,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   isLogin : boolean = false
+  firstName:any='';
+  lastName:any='';
 
   constructor(private _AuthService:AuthService) {
-    this._AuthService.currenUser.subscribe(()=>{
-      if(_AuthService.currenUser.getValue() != null)
+
+  }
+
+
+
+  ngOnInit(): void {
+    this._AuthService.currenUser.subscribe((data:any)=>{
+      this.firstName=data?.first_name
+      this.lastName=data?.last_name
+
+      if(this._AuthService.currenUser.getValue() != null)
       {
         this.isLogin = true
       }
@@ -22,11 +33,9 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+
   isLogout(){
     this._AuthService.logout()
-  }
-
-  ngOnInit(): void {
   }
 
 }

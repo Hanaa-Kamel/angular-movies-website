@@ -1,0 +1,29 @@
+
+<div class="container py-5">
+
+  <div class="row align-items-center" >
+
+    <div class="col-md-4">
+
+      <img class="w-100" [src]="imgPrefix+movieDetails?.poster_path" alt="">
+    </div>
+
+    <div class="col-md-8">
+
+      <h2 class="mb-2">{{movieDetails?.title}}</h2>
+
+
+
+      <button class="brn btn-primary mr-2 my-3 p-2" *ngFor='let genre of genres'>{{genre.name}}</button>
+      <h5 class="text-warning mb-2">Popularity : <span class="text-info">{{movieDetails?.popularity}}</span></h5>
+
+      <h5 class="text-warning mb-2">Vote : <span class="text-info">{{movieDetails?.vote_average}}</span></h5>
+      <h5 class="text-warning mb-2">Vote Count : <span class="text-info">{{movieDetails?.vote_count}}</span></h5>
+      <h5 class="text-warning mb-2"> Release Date :<span class="text-info">{{movieDetails?.release_date}}</span></h5>
+
+      <p class=" second-color pt-2">{{movieDetails?.overview}}</p>
+
+
+    </div>
+  </div>
+</div>

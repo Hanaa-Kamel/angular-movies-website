@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  p: number = 1;
+  searchText:any='';
+  medias: any[] = ["blanks"];
+  userInfo: any='';
+  loadingDone:any=false;
   trendingMovies : any[] =[];
   trendingTV : any[] =[];
   trendingPeople : any[] =[];
@@ -17,6 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(private _MoviesService:MoviesService) {
 
   }
+
 
   ngOnInit(): void {
     this._MoviesService.getTrending('movie').subscribe((data)=>{

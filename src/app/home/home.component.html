@@ -1,5 +1,6 @@
 <app-header [trendingMovies]='trendingMovies'></app-header>
-
+<input class="form-control site-search" *ngIf="loadingDone" [(ngModel)]="searchText"
+    placeholder="Search Movies or TVShow">
 <div class="container">
 
   <!-- ----------- Movies  -->
@@ -47,7 +48,7 @@
     <div *ngFor="let tv of trendingTV" class="col-md-2">
       <div class="movie my-2 position-relative">
         <img class="w-100" [src]="imgPrefix+tv.poster_path" [alt]="tv.title">
-        <h3 class="my-2 h6">{{tv.title}}</h3>
+        <h3 class="my-2 h6">{{tv.name}}</h3>
         <div class="vote">
           {{tv.vote_average}}
         </div>
@@ -65,7 +66,7 @@
       <div >
         <div class="border_line w-25 mb-4"></div>
         <h2>Trendig People to watch <br> Right Now </h2>
-        <p class="second-color my-2">most watched movies by days</p>
+        <p class="second-color my-2">most watched people by days</p>
         <div class="border_line w-75 mt-4"></div>
       </div>
     </div>
